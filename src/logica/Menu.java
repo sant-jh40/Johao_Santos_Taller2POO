@@ -86,19 +86,5 @@ public class Menu {
 		System.out.print("> ");
 	}
 
-	/*public static void lectura(String nombreArchivo) throw IOException {
-
-		FIle file = new File(nombreArchivo);
-		Scanner lector = lector.nextLine();
-		
-		while (lector.hasNextLine()) {
-			String[] partes = linea.split(";")
-			
-					
-		}
-		lector.close();
-		
-		
-	}*/
-
+	
 }
