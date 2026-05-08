@@ -46,5 +46,7 @@ public class Pokémones {
 	public String toString() {
 		return nombre + " | " + tipo + " | Stats totales: " + calculadorDeStats();
 	}
-	
+	public Pokémones clonar() {
+		return new Pokémones(this.nombre,this.habitad,this.porcentajeDeAparicion,this.vida,this.ataque,this.defensa,this.ataqueEspecial,this.defensaEspecial,this.velocidad, this.tipo);
+	}
 }
