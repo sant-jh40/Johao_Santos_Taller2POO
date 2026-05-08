@@ -9,9 +9,13 @@ public class Menu {
 	public static void main(String[] args) throws FileNotFoundException {
 
 		ArrayList<Pokémones> pokepoke = pokedex();
-
+		ArrayList<Gimnasio> gimnasios = lecturaDeGimnasios(pokepoke);
+		ArrayList<EntrenadorPokemon> entrenadores = altosMandos();
+		ArrayList<Habitats> habitats = habitats(pokepoke);
+		
 		Scanner s = new Scanner(System.in);
 		int op = 0;
+		
 		do {
 			menuInicial();
 			do {
@@ -60,8 +64,43 @@ public class Menu {
 				}
 				break;
 			case 2:
-				System.out.println("Iniciar una nueva partida.");
+				System.out.print("Ingrese Apodo: ");
+				String nombreJ = s.nextLine();
+				Jugador j = new Jugador(nombreJ);
+				System.out.println("Bienvenido " + nombreJ + "!!\n" + nombreJ + ", que deseas hacer?");
+				menuDeContinuar();
+				do {
+					try {
+						op = Integer.parseInt(s.nextLine());
+					} catch (NumberFormatException e) {
+						System.out.print("Opción invalida.\nIngrese una de las opciones presentadas.\n> ");
+					}
+					if (op < 1 || op > 8) {
+						System.out.print("Opción invalida.\nIngrese una de las opciones presentadas.\n> ");
+					}
+				} while (op != 8);
+				switch (op) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				case 7:
+					break;
+				case 8:
+					op = 3;
+					System.out.println("Guardado exitoso!\nSaliendo...");
+					break;
+				}
 				break;
+				
 			case 3:
 				System.out.println("Saliendo...");
 				break;
@@ -138,11 +177,11 @@ public class Menu {
 				return p.clonar();
 			}
 		}
-		return null; // Revisar si no encuentra el pokemon;
+		return null;
 	}
 
 	public static ArrayList<EntrenadorPokemon> altosMandos() throws FileNotFoundException {
-		Scanner lector = new Scanner(new File("Altos Mandos.txt"));
+		Scanner lector = new Scanner(new File("Alto Mando.txt"));
 
 		ArrayList<EntrenadorPokemon> listaDeAltosMandos = new ArrayList<>();
 
@@ -180,5 +219,17 @@ public class Menu {
 		}
 		lector.close();
 		return habitatsDisp;
+	}
+	public static void guardarRegistro(Jugador j) throws IOException{
+		BufferedWriter escribir = new BufferedWriter(new FileWriter("Registros.txt"));
+		escribir.write(j.getNombre()); //escribir la linea
+		escribir.newLine();//salto de linea
+		for(Pokémones p : j.getPokemones()) {
+			escribir.write(p.getNombre());
+		}
+		
+	}
+	public static void revisarEquipo() {
+		
 	}
 }
