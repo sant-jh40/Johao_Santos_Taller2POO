@@ -2,7 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
-public class EntrenadorPokemon {
+public abstract class EntrenadorPokemon {
 	protected String nombre;
 	protected ArrayList<Pokémones> equipoPokemonDelEntrenador;
 	
